@@ -20,6 +20,16 @@ const router = createBrowserRouter([
         {
             path: 'signup',
             element: <SignUp></SignUp>
+        },
+        {
+            path:'alltoys',
+            
+        },
+        {
+            path: 'mytoys',
+        },
+        {
+            path: 'addatoy',
         }
       ]
     },

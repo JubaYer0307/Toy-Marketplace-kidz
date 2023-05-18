@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../providers/AuthProvider';
@@ -15,6 +15,14 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, password, email);
+
+
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.log(error))
 
     }
 
