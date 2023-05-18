@@ -7,6 +7,7 @@ import UpdateToy from "../components/UpdateToy";
 import MyToys from "../components/MyToys";
 import AllToys from "../components/AllToys";
 import AddToy from "../components/AddToy";
+import SingleToyDetails from "../components/SingleToyDetails";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         {
             path: 'updatetoy',
             element: <UpdateToy></UpdateToy>
+        },
+        {
+            path: 'details',
+            element: <SingleToyDetails></SingleToyDetails>
         }
       ]
     },

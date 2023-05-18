@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import EachToyrow from "./EachToyrow";
+import SingleToyDetails from "./SingleToyDetails";
 
 const AllToys = () => {
   const toys = useLoaderData();
@@ -10,10 +11,8 @@ const AllToys = () => {
 
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
-          
           <thead>
             <tr>
-              
               <th>Toy Name</th>
               <th>Sub-category</th>
               <th>Price</th>
@@ -22,16 +21,13 @@ const AllToys = () => {
             </tr>
           </thead>
           <tbody>
+            {toys.map((toy) => (
+              <EachToyrow key={toy._id} toy={toy}></EachToyrow>
+              
+            ))}
             
-            {
-                toys.map(toy => <EachToyrow key={toy._id} toy={toy}></EachToyrow>)
-            }
             
-            
-           
           </tbody>
-          
-          
         </table>
       </div>
     </div>
