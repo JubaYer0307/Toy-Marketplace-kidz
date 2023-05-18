@@ -60,7 +60,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-      <button className="btn btn-ghost">Login</button>
+      <Link to='login' className="btn btn-ghost">Login</Link>
       </div>
     </div>
   );

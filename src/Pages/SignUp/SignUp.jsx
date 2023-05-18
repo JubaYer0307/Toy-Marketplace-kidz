@@ -1,22 +1,25 @@
-import React from "react";
+import React from 'react';
+
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const SignUp = () => {
 
-
-    const handleLogin = event => {
+    const handleSignUp = event => {
         event.preventDefault();
+        
     }
-  return (
-    <div className="hero min-h-screen bg-base-200">
+
+
+    return (
+        <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className=" w-1/2">
           <img src="https://i.ibb.co/bb53T5g/login.jpg" alt="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-            <form onSubmit={handleLogin}>
+          <h1 className="text-5xl font-bold">Sign Up Now!</h1>
+            <form onSubmit={handleSignUp}>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -29,7 +32,17 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text" name="name"
+                placeholder="name"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Confirm Password</span>
               </label>
               <input
                 type="text" name="password"
@@ -44,15 +57,16 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
              
-              <input className="btn btn-primary" type="submit" value="Login"/>
+              <input className="btn btn-primary" type="submit" value="Sign Up"/>
             </div>
             </form>
-            <p>New to this site? <Link to="/signup">Sign Up</Link></p>
+            <p>Already have an account? <Link to="/login">Login</Link></p>
           </div>
         </div>
       </div>
     </div>
   );
+
 };
 
-export default Login;
+export default SignUp;
