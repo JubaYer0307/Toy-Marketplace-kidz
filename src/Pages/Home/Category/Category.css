@@ -1,0 +1,29 @@
+.tab-list {
+    display: flex;
+    justify-content: center;
+    background-color: #8d8989;
+    padding: 10px;
+   
+    
+  }
+  
+  .tab {
+    color: #c9f30e;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  
+  .tab:hover {
+    background-color: rgba(12, 124, 252, 0.5);
+  }
+  
+  .tab-list .is-selected {
+    color: #7aefff;
+    background-color: #359aff;
+    border-radius: 5px;
+  }
+  
