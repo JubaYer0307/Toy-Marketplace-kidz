@@ -1,21 +1,23 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
+
 const Login = () => {
-  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const { signIn, signInWithGoogle, user } = useContext(AuthContext);
+
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(password, email);
 
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        setLoggedInUser(user);
       })
       .catch((error) => console.log(error));
   };
@@ -24,15 +26,20 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        setLoggedInUser(user);
       })
       .catch((error) => console.log(error));
   };
 
+  // Redirect to home page if the user is logged in
+  if (loggedInUser || user) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className=" w-1/2">
+        <div className="w-1/2">
           <img src="https://i.ibb.co/bb53T5g/login.jpg" alt="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

@@ -7,6 +7,7 @@ const Navbar = () => {
   const { currentUser, logOut } = useContext(AuthContext);
 
   useEffect(() => {
+    
     if (currentUser !== undefined) {
       console.log(currentUser);
     }
@@ -73,7 +74,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        {currentUser !== null && currentUser !== undefined ? (
+        {currentUser ? (
           <button onClick={handleLogOut} className="btn btn-ghost">
             Logout
           </button>

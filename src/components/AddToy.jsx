@@ -10,11 +10,11 @@ const AddToy = () => {
     const quantity = form.quantity.value;
     const rating = form.rating.value;
     const price = form.price.value;
-    const category = document.querySelector(".select").value;
+    const subcategory = document.querySelector(".select").value;
     const details = form.details.value;
     const photo = form.photo.value;
 
-    const newToy = { name, quantity, rating, price, category, details, photo };
+    const newToy = { name, quantity, rating, price, subcategory, details, photo };
 
     console.log(newToy);
 
@@ -111,7 +111,7 @@ const AddToy = () => {
             </label>
             <select className="select select-bordered">
               <option disabled selected>
-                Pick category
+                Pick Category
               </option>
               <option>Police Car</option>
               <option>Racing Car</option>

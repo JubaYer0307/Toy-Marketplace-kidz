@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState  } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -30,7 +30,7 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
-}
+  };
 
   const signInWithGoogle = () => {
     setLoading(true);
@@ -40,16 +40,16 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log('current user', currentUser);
+      setUser(currentUser);
       setLoading(false);
     });
     return () => {
-      return unsubscribe();
+      unsubscribe();
     };
   }, []);
 
   const authInfo = {
-    user,
+    currentUser: user,
     loading,
     createUser,
     signIn,
@@ -57,11 +57,7 @@ const AuthProvider = ({ children }) => {
     logOut
   };
 
-  return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;
