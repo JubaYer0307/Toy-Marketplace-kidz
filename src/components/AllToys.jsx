@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import EachToyrow from "./EachToyrow";
-import Subcategory from "../Pages/Home/Category/Subcategory";
+
 
 const AllToys = () => {
   const toys = useLoaderData();
@@ -22,8 +22,7 @@ const AllToys = () => {
           </thead>
           <tbody>
             {toys.map((toy) => (
-              <EachToyrow key={toy._id} toy={toy}></EachToyrow>,
-              <Subcategory key={toy._id} toy={toy}></Subcategory>
+              <EachToyrow key={toy._id} toy={toy}></EachToyrow>
 
             ))}
             

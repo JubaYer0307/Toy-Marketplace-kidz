@@ -5,7 +5,7 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [mytoys, setMytoys] = useState([]);
 
-  const url = `http://localhost:5000/addatoy?email=${user.email}`;
+  const url = `http://localhost:5000/addatoy`;
 
   useEffect(() => {
     fetch(url)
