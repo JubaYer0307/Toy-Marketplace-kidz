@@ -1,28 +1,43 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { currentUser, logOut } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (currentUser !== undefined) {
+      console.log(currentUser);
+    }
+  }, [currentUser]);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
+
   const navItems = (
     <>
       <li>
-        <Link to='/'>Home</Link>
-      </li>
-
-      <li>
-        <Link to='alltoys'>All Toys</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <Link>My Toys</Link>
+        <Link to="alltoys">All Toys</Link>
       </li>
       <li>
-        <Link to='addatoy'>Add A Toy</Link>
+        <Link to="mytoys">My Toys</Link>
       </li>
       <li>
-        <Link>Blogs</Link>
+        <Link to="addatoy">Add A Toy</Link>
+      </li>
+      <li>
+        <Link to="blog">Blogs</Link>
       </li>
     </>
   );
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -55,12 +70,18 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-            {navItems}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-      <Link to='login' className="btn btn-ghost">Login</Link>
+        {currentUser !== null && currentUser !== undefined ? (
+          <button onClick={handleLogOut} className="btn btn-ghost">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login" className="btn btn-ghost">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

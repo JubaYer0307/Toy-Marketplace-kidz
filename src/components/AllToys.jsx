@@ -2,13 +2,12 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import EachToyrow from "./EachToyrow";
 import SingleToyDetails from "./SingleToyDetails";
+import Subcategory from "../Pages/Home/Category/Subcategory";
 
 const AllToys = () => {
   const toys = useLoaderData();
   return (
     <div>
-      <h2>All ToY</h2>
-
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
@@ -22,11 +21,11 @@ const AllToys = () => {
           </thead>
           <tbody>
             {toys.map((toy) => (
-              <EachToyrow key={toy._id} toy={toy}></EachToyrow>
-              
+              <React.Fragment key={toy._id}>
+                <EachToyrow toy={toy} />
+                <Subcategory toy={toy} />
+              </React.Fragment>
             ))}
-            
-            
           </tbody>
         </table>
       </div>

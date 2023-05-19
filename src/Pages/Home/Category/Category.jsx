@@ -5,7 +5,7 @@ const Category = () => {
   const [categorys, setCategorys] = useState([]);
 
   useEffect(() => {
-    fetch("category.json")
+    fetch("http://localhost:5000/addatoy")
       .then((res) => res.json())
       .then((data) => setCategorys(data));
   }, []);

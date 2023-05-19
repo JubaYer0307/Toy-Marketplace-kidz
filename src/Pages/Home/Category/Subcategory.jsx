@@ -1,7 +1,13 @@
-import React from "react";
+import React from 'react';
 
-const EachToyrow = ({ toy }) => {
+const Subcategory = ({ toy }) => {
+  // Check if 'toy' object is defined
+  if (!toy) {
+    return null; // or return an appropriate JSX component or message
+  }
+
   const { name, rating, price, category, quantity, details, photo } = toy;
+
   return (
     <tr>
       <th>
@@ -13,12 +19,7 @@ const EachToyrow = ({ toy }) => {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </th>
@@ -41,4 +42,4 @@ const EachToyrow = ({ toy }) => {
   );
 };
 
-export default EachToyrow;
+export default Subcategory;
