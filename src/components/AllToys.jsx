@@ -9,14 +9,17 @@ const AllToys = () => {
     <div>
       
 
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full mt-4 mb-4">
         <table className="table w-full">
           <thead>
             <tr>
+              
+              <th>Toy Photo</th>
               <th>Toy Name</th>
               <th>Sub-category</th>
-              <th>Price</th>
+              <th>Seller Name</th>
               <th>Available Quantity</th>
+              <th>Price</th>
               <th></th>
             </tr>
           </thead>

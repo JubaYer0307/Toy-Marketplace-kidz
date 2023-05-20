@@ -1,27 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const EachToyrow = ({ toy }) => {
-  const { name, rating, price, category, quantity, details, photo } = toy;
+  const { name, rating, price, category, quantity, details, photo, _id, sellerName, 
+    subcategory } = toy;
   return (
     <tr>
-      <th>
-        <button className="btn btn-circle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </th>
+      
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
@@ -32,10 +17,15 @@ const EachToyrow = ({ toy }) => {
         </div>
       </td>
       <td>{name}</td>
+      <td>{subcategory}</td>
+      
+      <td>{sellerName}</td>
       <td>{price}</td>
       <td>{quantity}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+      <Link to={`/details/${_id}`} className="btn ">
+            View Details
+          </Link>
       </th>
     </tr>
   );

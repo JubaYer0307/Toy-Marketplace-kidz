@@ -54,8 +54,8 @@ const AddToy = () => {
   };
 
   return (
-    <div className="bg-[#F4F3F0] p-24">
-      <h2 className="text-3xl font-extrabold">Add a Toy</h2>
+    <div className="bg-[#35D3F0] p-24">
+      <h2 className="text-3xl font-extrabold text-center">Add a Toy</h2>
       <form onSubmit={handleAddToy}>
         
         <div className="md:flex mb-8">
@@ -64,11 +64,11 @@ const AddToy = () => {
               <span className="label-text">Toy Name</span>
             </label>
             <label className="input-group">
-              <input
+              <input 
                 type="text"
                 name="name"
                 placeholder="Toy Name"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full "
               />
             </label>
           </div>

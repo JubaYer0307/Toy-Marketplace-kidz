@@ -1,7 +1,10 @@
+// SingleToyDetails.js
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const SingleToyDetails = () => {
   const [toy, setToy] = useState(null);
+  const { id } = useParams();
 
   useEffect(() => {
     fetchData();
@@ -9,10 +12,10 @@ const SingleToyDetails = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/addatoy");
+      const response = await fetch(`http://localhost:5000/addatoy/${id}`);
       const data = await response.json();
-      if (data.length > 0) {
-        setToy(data[0]); 
+      if (data) {
+        setToy(data);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -21,19 +24,43 @@ const SingleToyDetails = () => {
 
   return (
     <div>
-      <h3>Toy Details</h3>
+      
       {toy ? (
         <>
-          <p>Name: {toy.name}</p>
-          <p>Sub-category: {toy.category}</p>
-          <p>Price: {toy.price}</p>
-          <p>Available Quantity: {toy.quantity}</p>
-          <p>{toy._id}</p>
+        <div className="flex gap-12 justify-center items-center ">
+        
+        
+          
+          <div>
+            <p><img src={toy.photo} alt="" style={{width:'400px'}}/></p>
+
+        </div>
+        <div >
+          <p className="text-4xl font-bold text-cyan-800 mb-4 " style={{fontFamily: 'cursive'}}>Toy Details</p>
+          
+
+
+          <div>
+          {toy.name? <p>Name: {toy.name}</p> : <>Name: Not Added</>}
+          {toy.subCategory? <p>SubCategory: {toy.price}</p> : <>SubCategory: Not Added</>}
+          {toy.price? <p>Price: {toy.price}</p> : <>Price: Not Added</>}
+          {toy.rating? <p>Rating: {toy.rating}</p> : <>Rating: Not Added</>}
+          {toy.quantity? <p>Quantity: {toy.quantity}</p> : <>Quantity: Not Added</>}
+          {toy.sellerName? <p>Seller Name: {toy.sellerName}</p> : <></>}
+          {toy.sellerEmail? <p>Seller Email: {toy.sellerEmail}</p> : <></>}
+          {toy.details? <p>Description: {toy.details}</p> : <>Description: Not Added</>}
+          </div>
+          
+          
+          </div>
+          
+        </div>
         </>
       ) : (
         <p>Loading toy details...</p>
       )}
     </div>
+   
   );
 };
 

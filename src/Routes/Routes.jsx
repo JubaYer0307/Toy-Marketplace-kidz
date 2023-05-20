@@ -47,13 +47,14 @@ const router = createBrowserRouter([
             element: <UpdateToy></UpdateToy>
         },
         {
-            path: 'details',
+            path: 'details/:id',
             element: <SingleToyDetails></SingleToyDetails>
         },
         {
             path: 'blog',
             element: <Blog></Blog>
         }
+        
       ]
     },
   ]);

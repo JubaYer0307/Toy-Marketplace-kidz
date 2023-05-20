@@ -20,9 +20,9 @@ const Category = () => {
     <div>
       
       <Tabs>
-      <h3 className="text-center text-3xl font-bold pb-1">Sub-Category</h3>
-        <TabList className="tab-list">
-          <Tab className="tab">Police Car</Tab>
+      <h3 className="text-center text-3xl font-bold pb-1" style={{fontFamily:'cursive'}}>Select Category</h3>
+        <TabList className="tab-list font-medium">
+          <Tab className="tab ">Police Car</Tab>
           <Tab className="tab">Fire Car</Tab>
           <Tab className="tab">Racing Car</Tab>
         </TabList>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Review = () => {
   return (
-    <div className="carousel w-full" style={{ backgroundColor: "#ABE0F2", border: "5px dotted #35D3F0" }}>
+    <div className="carousel w-full " style={{ fontFamily: 'cursive',backgroundColor: "#ABE0F2", border: "5px dotted #35D3F0" }}>
       <div id="slide1" className="carousel-item relative w-full h-64">
         <div className="flex justify-center items-center flex-wrap">
           <h2 className="text-center text-lg font-bold px-60">

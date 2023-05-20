@@ -3,19 +3,29 @@
     justify-content: center;
     background-color: #ABE0F2;
     padding: 10px;
-    border: 5px dotted #35D3F0;
+    border: 5px dotted #35D3F0 ;
+   
    
     
   }
+
+  .tab-list:hover {
+    border-color: #03788d;
+    
+    
+  }
+
+
   
   .tab {
-    color: #35D3F0;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    
+   
+    
     border-radius: 10px;
     padding-bottom: 10px;
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: cursive;
   }
   
   .tab:hover {

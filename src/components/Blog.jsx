@@ -2,9 +2,9 @@ import React from "react";
 
 const Blog = () => {
   return (
-    <div className="text-center">
-      <div>
-        <h2>
+    <div className="text-center ">
+      <div className="mb-5 bg-cyan-400">
+        <h2 className="font-bold">
           What is an access token and refresh token? How do they work and where
           should we store them on the client-side?
         </h2>
@@ -17,9 +17,9 @@ const Blog = () => {
         </p>
       </div>
 
-      <div>
-        <h2>Compare SQL and NoSQL databases?</h2>
-        <p>
+      <div className="mb-5 bg-cyan-400">
+        <h2 className="font-bold">Compare SQL and NoSQL databases?</h2>
+        <p >
           SQL Databases: Structured, relational databases with predefined
           schemas and support for complex queries and transactions. <br />
           NoSQL Databases: Non-relational databases that offer flexible schemas,
@@ -28,8 +28,8 @@ const Blog = () => {
         </p>
       </div>
 
-      <div>
-        <h2>What is Express.js? What is Nest.js (google it)?</h2>
+      <div className="mb-5 bg-cyan-400">
+        <h2 className="font-bold">What is Express.js? What is Nest.js (google it)?</h2>
         <p>
           Express.js: Express.js is a popular web application framework for
           Node.js. It simplifies the process of building web applications by
@@ -42,8 +42,8 @@ const Blog = () => {
         </p>
       </div>
 
-      <div>
-        <h2>What is MongoDB aggregate and how does it work (google it)?</h2>
+      <div className="mb-5 bg-cyan-400">
+        <h2 className="font-bold">What is MongoDB aggregate and how does it work (google it)?</h2>
         <p>
           MongoDB Aggregate: MongoDB Aggregate is a powerful feature that allows
           for advanced data processing and analysis within MongoDB. It provides
