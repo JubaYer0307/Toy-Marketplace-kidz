@@ -5,6 +5,7 @@ import Category from '../Category/Category';
 
 import Gallery from '../../../components/Gallery';
 import Review from '../../../components/Review';
+import ShopNow from '../../../components/ShopNow';
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
             
             <Gallery></Gallery>
             <Review></Review>
+            <ShopNow></ShopNow>
         </div>
     );
 };

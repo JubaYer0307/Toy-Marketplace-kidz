@@ -1,9 +1,16 @@
 // Categorycard.js
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
+
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Categorycard = ({ subcategory }) => {
   const { name, photo, price, rating, _id } = subcategory;
+  const { user } = useContext(AuthContext);
+
+  const notify = () => toast("You Need To Login First");
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
@@ -16,11 +23,18 @@ const Categorycard = ({ subcategory }) => {
         <p>Rating: {rating}</p>
 
         <div className="card-actions">
-          <Link to={`/details/${_id}`} className="btn btn-primary">
-            View Details
-          </Link>
-        </div>
-      </div>
+          {user ? (
+            <Link to={`/details/${_id}`} className="btn">
+              View Details
+            </Link>
+          ) : (
+            <>
+            <Link onClick={notify} className="btn">
+              View Details
+            </Link><ToastContainer />
+            </>
+)} </div>
+            </div>
     </div>
   );
 };

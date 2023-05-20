@@ -1,4 +1,3 @@
-// Navbar.jsx
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
@@ -22,11 +21,15 @@ const Navbar = () => {
       <li>
         <Link to="alltoys">All Toys</Link>
       </li>
-      { user?.email ? <>
-        <li>
-        <Link to="/mytoys">My Toys</Link>
-      </li>
-      </> : <></>}
+      {user?.email ? (
+        <>
+          <li>
+            <Link to="/mytoys">My Toys</Link>
+          </li>
+        </>
+      ) : (
+        <></>
+      )}
       <li>
         <Link to="addatoy">Add A Toy</Link>
       </li>
@@ -90,13 +93,15 @@ const Navbar = () => {
           )}
         </div>
         {user ? (
-          <button onClick={handleLogOut} className="btn btn-ghost">
+          <button onClick={handleLogOut} className="btn ">
             Logout
           </button>
         ) : (
-          <Link to="/login" className="btn btn-ghost">
-            Login
-          </Link>
+          <button className="btn">
+            <Link to="/login" className="btn btn-ghost">
+              Login
+            </Link>
+          </button>
         )}
       </div>
     </div>
