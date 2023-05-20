@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
-
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const { signIn, signInWithGoogle, user } = useContext(AuthContext);
-
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [sellerName, setSellerName] = useState(null);
+  const [sellerEmail, setSellerEmail] = useState(null);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -18,6 +19,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setLoggedInUser(user);
+        setSellerName(user.displayName);
+        setSellerEmail(user.email);
       })
       .catch((error) => console.log(error));
   };
@@ -27,11 +30,28 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setLoggedInUser(user);
+        setSellerName(user.displayName);
+        setSellerEmail(user.email);
       })
       .catch((error) => console.log(error));
   };
 
-  // Redirect to home page if the user is logged in
+  const addToy = async (newToy) => {
+    newToy.sellerName = sellerName;
+    newToy.sellerEmail = sellerEmail;
+
+    const response = await fetch('http://localhost:5000/addatoy', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newToy),
+    });
+
+    const data = await response.json();
+    return data;
+  };
+
   if (loggedInUser || user) {
     return <Navigate to="/" />;
   }

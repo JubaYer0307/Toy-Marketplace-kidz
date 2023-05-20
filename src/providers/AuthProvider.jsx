@@ -1,14 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react';
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-} from 'firebase/auth';
-import app from '../firebase/firebase.config';
+// AuthProvider.jsx
+import React, { createContext, useEffect, useState } from "react";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -39,8 +32,8 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
       setLoading(false);
     });
     return () => {
@@ -48,35 +41,16 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const addToy = async (newToy) => {
-    // Get the seller's email and name from the authenticated user
-    const sellerEmail = user?.email;
-    const sellerName = user?.displayName;
-
-    // Add the seller's email and name to the newToy object
-    newToy.sellerEmail = sellerEmail;
-    newToy.sellerName = sellerName;
-
-    const response = await fetch('http://localhost:5000/addatoy', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newToy),
-    });
-
-    const data = await response.json();
-    return data;
-  };
+ 
 
   const authInfo = {
-    currentUser: user,
+    user,
     loading,
     createUser,
     signIn,
     signInWithGoogle,
     logOut,
-    addToy,
+    
   };
 
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

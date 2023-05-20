@@ -1,17 +1,12 @@
-import React, { useContext, useEffect } from "react";
+// Navbar.jsx
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { AuthContext } from "../../../providers/AuthProvider";
+import "./Navbar.css";
 
 const Navbar = () => {
-  const { currentUser, logOut } = useContext(AuthContext);
-
-  useEffect(() => {
-    
-    if (currentUser !== undefined) {
-      console.log(currentUser);
-    }
-  }, [currentUser]);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
@@ -74,7 +69,25 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        {currentUser ? (
+        <div>
+          {user && user.photoURL ? (
+            <div className="user-info">
+              <img
+                src={user.photoURL}
+                alt={user.displayName}
+                style={{
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  borderRadius: "50%",
+                }}
+              />
+              <div className="user-name">{user.displayName}</div>
+            </div>
+          ) : (
+            <div></div>
+          )}
+        </div>
+        {user ? (
           <button onClick={handleLogOut} className="btn btn-ghost">
             Logout
           </button>

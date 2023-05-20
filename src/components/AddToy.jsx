@@ -1,28 +1,41 @@
-import Swal from "sweetalert2";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddToy = () => {
+  const { user } = useContext(AuthContext);
+  const sellerName = user?.displayName;
+  const sellerEmail = user?.email;
+
   const handleAddToy = (event) => {
     event.preventDefault();
 
     const form = event.target;
-
     const name = form.name.value;
     const quantity = form.quantity.value;
     const rating = form.rating.value;
     const price = form.price.value;
-    const subcategory = document.querySelector(".select").value;
+    const subcategory = document.querySelector('.select').value;
     const details = form.details.value;
     const photo = form.photo.value;
 
-    const newToy = { name, quantity, rating, price, subcategory, details, photo };
+    const newToy = {
+      name,
+      quantity,
+      rating,
+      price,
+      subcategory,
+      details,
+      photo,
+      sellerName,
+      sellerEmail,
+    };
 
-    console.log(newToy);
-
-    
-    fetch("http://localhost:5000/addatoy", {
-      method: "POST",
+    fetch('http://localhost:5000/addatoy', {
+      method: 'POST',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify(newToy),
     })
@@ -31,10 +44,10 @@ const AddToy = () => {
         console.log(data);
         if (data.insertedId) {
           Swal.fire({
-            title: "Success!",
-            text: "Toy Added Successfully",
-            icon: "success",
-            confirmButtonText: "Cool",
+            title: 'Success!',
+            text: 'Toy Added Successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool',
           });
         }
       });
