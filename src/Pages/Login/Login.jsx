@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
-import Swal from 'sweetalert2';
+
 
 const Login = () => {
   const { signIn, signInWithGoogle, user } = useContext(AuthContext);
