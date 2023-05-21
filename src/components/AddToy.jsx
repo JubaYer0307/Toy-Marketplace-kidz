@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../providers/AuthProvider';
-import Swal from 'sweetalert2';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
 
 const AddToy = () => {
+  useTitle("Add Toy");
   const { user } = useContext(AuthContext);
   const sellerName = user?.displayName;
   const sellerEmail = user?.email;
@@ -16,7 +18,7 @@ const AddToy = () => {
     const quantity = form.quantity.value;
     const rating = form.rating.value;
     const price = form.price.value;
-    const subcategory = document.querySelector('.select').value;
+    const subcategory = document.querySelector(".select").value;
     const details = form.details.value;
     const photo = form.photo.value;
 
@@ -32,10 +34,10 @@ const AddToy = () => {
       sellerEmail,
     };
 
-    fetch('http://localhost:5000/addatoy', {
-      method: 'POST',
+    fetch("https://toy-marketplace-server-eta.vercel.app/addatoy", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
       body: JSON.stringify(newToy),
     })
@@ -44,10 +46,10 @@ const AddToy = () => {
         console.log(data);
         if (data.insertedId) {
           Swal.fire({
-            title: 'Success!',
-            text: 'Toy Added Successfully',
-            icon: 'success',
-            confirmButtonText: 'Cool',
+            title: "Success!",
+            text: "Toy Added Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
           });
         }
       });
@@ -57,14 +59,13 @@ const AddToy = () => {
     <div className="bg-[#35D3F0] p-24">
       <h2 className="text-3xl font-extrabold text-center">Add a Toy</h2>
       <form onSubmit={handleAddToy}>
-        
         <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">
             <label className="label">
               <span className="label-text">Toy Name</span>
             </label>
             <label className="input-group">
-              <input 
+              <input
                 type="text"
                 name="name"
                 placeholder="Toy Name"
@@ -86,7 +87,7 @@ const AddToy = () => {
             </label>
           </div>
         </div>
-       
+
         <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">
             <label className="label">
@@ -114,9 +115,8 @@ const AddToy = () => {
               />
             </label>
           </div>
-          
         </div>
-        
+
         <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">
             <label className="label">
@@ -145,7 +145,7 @@ const AddToy = () => {
             </label>
           </div>
         </div>
-        
+
         <div className="mb-8">
           <div className="form-control w-full">
             <label className="label">

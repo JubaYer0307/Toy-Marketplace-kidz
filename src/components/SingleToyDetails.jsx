@@ -1,18 +1,21 @@
-// SingleToyDetails.js
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 
 const SingleToyDetails = () => {
+  useTitle('Details')
   const [toy, setToy] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
+    
     fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/addatoy/${id}`);
+      const response = await fetch(`https://toy-marketplace-server-eta.vercel.app/addatoy/${id}`);
       const data = await response.json();
       if (data) {
         setToy(data);

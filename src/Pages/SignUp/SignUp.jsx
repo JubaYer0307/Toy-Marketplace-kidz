@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
+  useTitle('Sign Up')
   const { createUser } = useContext(AuthContext);
 
   const handleSignUp = event => {
@@ -12,9 +14,10 @@ const SignUp = () => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
-    const photoURL = form.PhotoURL.value; // Corrected variable name
+    const photoURL = form.PhotoURL.value; 
     const password = form.password.value;
     console.log(name, password, email);
+    
 
     createUser(email, password)
       .then(result => {
@@ -85,11 +88,11 @@ const SignUp = () => {
                   placeholder="password"
                   className="input input-bordered"
                 />
-                <label className="label">
+                {/* <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
-                </label>
+                </label> */}
               </div>
               <div className="form-control mt-6">
                 <input className="btn btn-primary" type="submit" value="Sign Up" />

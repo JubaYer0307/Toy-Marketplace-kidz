@@ -1,13 +1,15 @@
-import React, { useContext, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
-
+import React, { useContext, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
   const { signIn, signInWithGoogle, user } = useContext(AuthContext);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [sellerName, setSellerName] = useState(null);
   const [sellerEmail, setSellerEmail] = useState(null);
+
+  useTitle("Login");
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -40,13 +42,16 @@ const Login = () => {
     newToy.sellerName = sellerName;
     newToy.sellerEmail = sellerEmail;
 
-    const response = await fetch('http://localhost:5000/addatoy', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newToy),
-    });
+    const response = await fetch(
+      "https://toy-marketplace-server-eta.vercel.app/addatoy",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newToy),
+      }
+    );
 
     const data = await response.json();
     return data;
@@ -87,17 +92,24 @@ const Login = () => {
                   placeholder="password"
                   className="input input-bordered"
                 />
-                <label className="label">
+                {/* <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
-                </label>
+                </label> */}
               </div>
               <div className="form-control mt-6">
-                <input className="btn btn-primary" type="submit" value="Login" />
+                <input
+                  className="btn btn-primary"
+                  type="submit"
+                  value="Login"
+                />
               </div>
             </form>
-            <button className="btn btn-secondary mt-4" onClick={handleGoogleSignIn}>
+            <button
+              className="btn btn-secondary mt-4"
+              onClick={handleGoogleSignIn}
+            >
               Sign in with Google
             </button>
             <p>

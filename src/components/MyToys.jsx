@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, Navigate } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 
 const MyToys = () => {
+  useTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc"); // Track the sorting order
@@ -12,36 +14,32 @@ const MyToys = () => {
     console.log(_id);
 
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/addatoy/${_id}`, {
-          method: 'DELETE'
+        fetch(`https://toy-marketplace-server-eta.vercel.app/addatoy/${_id}`, {
+          method: "DELETE",
         })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if (data.deletedCount > 0) {
-            Swal.fire(
-              'Deleted!',
-              'Your Toy has been deleted.',
-              'success'
-            );
-          }
-        });
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your Toy has been deleted.", "success");
+            }
+          });
       }
     });
   };
 
   useEffect(() => {
     if (user) {
-      const url = `http://localhost:5000/mytoys?sellerEmail=${user.email}`;
+      const url = `https://toy-marketplace-server-eta.vercel.app/mytoys?sellerEmail=${user.email}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => {
@@ -51,7 +49,6 @@ const MyToys = () => {
     }
   }, [user]);
 
-  // Sort toys based on price
   useEffect(() => {
     const sortedToys = [...myToys].sort((a, b) => {
       if (sortOrder === "asc") {
@@ -63,7 +60,6 @@ const MyToys = () => {
     setMyToys(sortedToys);
   }, [sortOrder]);
 
-  // Toggle sorting order
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
@@ -76,13 +72,9 @@ const MyToys = () => {
         </button>
       </div>
       <div className="grid grid-cols-3 gap-3">
-        {/* Render the myToys state data */}
         {myToys.map((toy) =>
           toy.sellerEmail === user.email ? (
-            <div
-              className="card w-96 bg-base-100 shadow-xl mb-5"
-              key={toy._id}
-            >
+            <div className="card w-96 bg-base-100 shadow-xl mb-5" key={toy._id}>
               <figure>
                 <img src={toy.photo} alt="Toy" style={{ width: "100%" }} />
               </figure>

@@ -3,20 +3,14 @@
     justify-content: center;
     background-color: #ABE0F2;
     padding: 10px;
-    border: 5px dotted #35D3F0 ;
-   
+    border-top: 5px dotted #E469A3 ;
+    border-bottom: 5px dotted #E469A3 ;
+   margin-bottom: 5px;
    
     
   }
 
-  .tab-list:hover {
-    border-color: #03788d;
-    
-    
-  }
 
-
-  
   .tab {
     
    
@@ -26,15 +20,13 @@
     font-size: 18px;
     font-weight: bold;
     font-family: cursive;
+    
   }
   
-  .tab:hover {
-    background-color: rgba(12, 124, 200, 0.2);
-  }
   
-  .tab-list .is-selected {
+  
+  .tab.is-selected {
     color: #35D3F0;
-    background-color: #35D3F0;
-    border-radius: 5px;
+    background-color: #04778b;
+    border-color: #04778b;
   }
-  

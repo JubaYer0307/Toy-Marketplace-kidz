@@ -3,12 +3,21 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const EachToyrow = ({ toy }) => {
-  const { name, rating, price, category, quantity, details, photo, _id, sellerName, 
-    subcategory } = toy;
-    const {user} = useContext(AuthContext);
+  const {
+    name,
+    rating,
+    price,
+    category,
+    quantity,
+    details,
+    photo,
+    _id,
+    sellerName,
+    subcategory,
+  } = toy;
+  const { user } = useContext(AuthContext);
   return (
     <tr>
-      
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
@@ -20,18 +29,23 @@ const EachToyrow = ({ toy }) => {
       </td>
       <td>{name}</td>
       <td>{subcategory}</td>
-      
+
       <td>{sellerName}</td>
       <td>{price}</td>
       <td>{quantity}</td>
       <th>
-      {user?  <Link to={`/details/${_id}`} className="btn ">
+        {user ? (
+          <Link to={`/details/${_id}`} className="btn ">
             View Details
-          </Link> : <div><Link to={`/login`} className="btn ">
-            View Details
-          </Link></div>}
+          </Link>
+        ) : (
+          <div>
+            <Link to={`/login`} className="btn ">
+              View Details
+            </Link>
+          </div>
+        )}
       </th>
-      
     </tr>
   );
 };

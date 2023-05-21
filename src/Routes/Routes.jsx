@@ -13,57 +13,62 @@ import PrivateRoute from "../components/PrivateRoute";
 import Page404 from "../components/page404";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      children: [
-        {
-            path: '/',
-            element: <Home></Home>
-        },
-        {
-            path: 'login',
-            element: <Login></Login>
-        },
-        {
-            path: 'signup',
-            element: <SignUp></SignUp>
-        },
-        {
-            path:'alltoys',
-            element:<AllToys></AllToys>,
-            loader: () => fetch('http://localhost:5000/addatoy')
-            
-        },
-        {
-            path: 'mytoys',
-            element: <MyToys></MyToys>
-        },
-        {
-            path: 'addatoy',
-            element: <PrivateRoute><AddToy></AddToy></PrivateRoute>
-        },
-        {
-            path: '/updatetoy/:id',
-            element: <UpdateToy></UpdateToy>,
-            loader: ({params}) => fetch(`http://localhost:5000/addatoy/${params.id}`)
-        },
-        {
-            path: 'details/:id',
-            element: <SingleToyDetails></SingleToyDetails>
-        },
-        {
-            path: 'blog',
-            element: <Blog></Blog>
-        },
-        
-        
-      ],
-    },
-    {
-        path: '*',
-        element: <Page404></Page404>
-      }
-  ]);
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "signup",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "alltoys",
+        element: <AllToys></AllToys>,
+        loader: () =>
+          fetch("https://toy-marketplace-server-eta.vercel.app/addatoy"),
+      },
+      {
+        path: "mytoys",
+        element: <MyToys></MyToys>,
+      },
+      {
+        path: "addatoy",
+        element: (
+          <PrivateRoute>
+            <AddToy></AddToy>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updatetoy/:id",
+        element: <UpdateToy></UpdateToy>,
+        loader: ({ params }) =>
+          fetch(
+            `https://toy-marketplace-server-eta.vercel.app/addatoy/${params.id}`
+          ),
+      },
+      {
+        path: "details/:id",
+        element: <SingleToyDetails></SingleToyDetails>,
+      },
+      {
+        path: "blog",
+        element: <Blog></Blog>,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <Page404></Page404>,
+  },
+]);
 
-  export default router;
+export default router;
