@@ -35,14 +35,14 @@ const Category = () => {
           className="text-center text-3xl font-bold pb-1"
           style={{ fontFamily: "cursive" }}
         >
-          Select Category
+          Select Car Type
         </h3>
         <TabList className="tab-list font-medium">
           <Tab className="tab">Police Car</Tab>
           <Tab className="tab">Fire Car</Tab>
           <Tab className="tab">Racing Car</Tab>
         </TabList>
-        <TabPanel>
+        <TabPanel className="mt-5">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filterBySubcategory("Police Car").map((subcategory) => (
               <Categorycard key={subcategory._id} subcategory={subcategory} />

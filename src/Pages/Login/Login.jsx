@@ -3,11 +3,15 @@ import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import useTitle from "../../hooks/useTitle";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   const { signIn, signInWithGoogle, user } = useContext(AuthContext);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [sellerName, setSellerName] = useState(null);
   const [sellerEmail, setSellerEmail] = useState(null);
+  const [error, setError] = useState(null);
 
   useTitle("Login");
 
@@ -24,7 +28,9 @@ const Login = () => {
         setSellerName(user.displayName);
         setSellerEmail(user.email);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   const handleGoogleSignIn = () => {
@@ -35,7 +41,9 @@ const Login = () => {
         setSellerName(user.displayName);
         setSellerEmail(user.email);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   const addToy = async (newToy) => {
@@ -79,7 +87,7 @@ const Login = () => {
                   type="text"
                   name="email"
                   placeholder="email"
-                  className="input input-bordered"
+                  className="input input-bordered" required
                 />
               </div>
               <div className="form-control">
@@ -90,7 +98,7 @@ const Login = () => {
                   type="password"
                   name="password"
                   placeholder="password"
-                  className="input input-bordered"
+                  className="input input-bordered" required
                 />
                 {/* <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
@@ -99,12 +107,10 @@ const Login = () => {
                 </label> */}
               </div>
               <div className="form-control mt-6">
-                <input
-                  className="btn btn-primary"
-                  type="submit"
-                  value="Login"
-                />
+              {error && <p className="text-red-500 mt-2 mb-4">{error}</p>}
+                <input className="btn btn-primary" type="submit" value="Login" />
               </div>
+              
             </form>
             <button
               className="btn btn-secondary mt-4"
@@ -115,6 +121,7 @@ const Login = () => {
             <p>
               New to this site? <Link to="/signup">Sign Up</Link>
             </p>
+            <ToastContainer />
           </div>
         </div>
       </div>

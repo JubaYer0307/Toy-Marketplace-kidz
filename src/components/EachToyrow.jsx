@@ -35,13 +35,13 @@ const EachToyrow = ({ toy }) => {
       <td>{quantity}</td>
       <th>
         {user ? (
-          <Link to={`/details/${_id}`} className="btn ">
-            View Details
+          <Link to={`/details/${_id}`} className="btn" style={{backgroundColor: '#ABE0F2', color:'black'}}>
+            Details
           </Link>
         ) : (
           <div>
-            <Link to={`/login`} className="btn ">
-              View Details
+            <Link to={`/login`} className="btn " style={{backgroundColor: '#ABE0F2', color:'black'}}>
+              Details
             </Link>
           </div>
         )}

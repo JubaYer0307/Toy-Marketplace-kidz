@@ -30,7 +30,8 @@ const MyToys = () => {
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your Toy has been deleted.", "success");
+              window.location.reload();
+              
             }
           });
       }
@@ -91,7 +92,10 @@ const MyToys = () => {
                     <button className="btn">Update</button>
                   </Link>
                   <button
-                    onClick={() => handleToyDelete(toy._id)}
+                    onClick={() => {
+                      handleToyDelete(toy._id);
+                      
+                    }}
                     className="btn"
                   >
                     Delete

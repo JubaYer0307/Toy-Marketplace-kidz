@@ -11,17 +11,9 @@ const Categorycard = ({ subcategory }) => {
   const notify = () => toast("You Need To Login First");
 
   return (
-    <div
-      className="card w-96 bg-base-100 shadow-xl"
-      style={{ background: " #E1D6C2" }}
-    >
+    <div className="card w-96 bg-base-100 shadow-xl" style={{ background: "#E1D6C2" }}>
       <figure className="px-10 pt-10">
-        <img
-          style={{ height: "200px" }}
-          src={photo}
-          alt="car"
-          className="rounded-xl"
-        />
+        <img style={{ height: "200px" }} src={photo} alt="car" className="rounded-xl" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
@@ -33,17 +25,17 @@ const Categorycard = ({ subcategory }) => {
             <Link
               to={`/details/${_id}`}
               className="btn"
-              style={{ backgroundColor: "#ABE0F2" }}
+              style={{ backgroundColor: "#ABE0F2", color: "black" }}
             >
-              View Details
+              Details
             </Link>
           ) : (
             <>
-              <button onClick={notify} className="btn">
-                View Details
+              <button onClick={notify} className="btn" style={{ backgroundColor: "#ABE0F2", color: "black" }}>
+                 <Link to="/login">Details</Link>
               </button>
-              <ToastContainer />
-            </>
+              
+            </> || <ToastContainer />
           )}
         </div>
       </div>

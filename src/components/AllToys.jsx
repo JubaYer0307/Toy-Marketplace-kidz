@@ -20,6 +20,10 @@ const AllToys = () => {
     setLimit(20);
   };
 
+  const handleShowMore = () => {
+    setLimit((prevLimit) => prevLimit + 20);
+  };
+
   return (
     <div>
       <div className="text-center mt-5">
@@ -57,6 +61,14 @@ const AllToys = () => {
           </tbody>
         </table>
       </div>
+
+      {filteredToys.length > limit && (
+        <div className="text-center mb-4">
+          <button className="btn" onClick={handleShowMore}>
+            Show More
+          </button>
+        </div>
+      )}
     </div>
   );
 };

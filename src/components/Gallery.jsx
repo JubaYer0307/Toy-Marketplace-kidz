@@ -29,7 +29,7 @@ const Gallery = () => {
   return (
     <div className="gallery mt-16 mb-5">
       <h1
-        className="text-5xl font-bold text-center"
+        className="text-5xl font-bold text-center mb-5"
         style={{ fontFamily: "cursive" }}
       >
         Photo Gallery

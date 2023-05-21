@@ -70,6 +70,7 @@ const AddToy = () => {
                 name="name"
                 placeholder="Toy Name"
                 className="input input-bordered w-full "
+                required
               />
             </label>
           </div>
@@ -83,6 +84,7 @@ const AddToy = () => {
                 name="price"
                 placeholder="Price"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -112,6 +114,7 @@ const AddToy = () => {
                 name="quantity"
                 placeholder="Available Quantity"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -122,13 +125,13 @@ const AddToy = () => {
             <label className="label">
               <span className="label-text">Category</span>
             </label>
-            <select className="select select-bordered">
-              <option disabled selected>
+            <select className="select select-bordered" defaultValue="">
+              <option disabled value="">
                 Pick Category
               </option>
-              <option>Police Car</option>
-              <option>Racing Car</option>
-              <option>Fire Car</option>
+              <option value="police">Police Car</option>
+              <option value="racing">Racing Car</option>
+              <option value="fire">Fire Car</option>
             </select>
           </div>
           <div className="form-control md:w-1/2 ml-4">
@@ -157,6 +160,7 @@ const AddToy = () => {
                 name="photo"
                 placeholder="Photo URL"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
